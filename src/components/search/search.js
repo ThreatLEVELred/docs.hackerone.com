@@ -1,45 +1,16 @@
-import React from 'react'
+import React from "react";
 
-import './search.scss'
-import './algolia.css'
+import { DocSearch } from "@docsearch/react";
+import "@docsearch/css";
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      enabled: true,
-    }
-  }
-
-  componentDidMount() {
-    if (window.docsearch) {
-      window.docsearch({
-        apiKey: 'acfb7def12803db2cd4ac0539b2b571a',
-        indexName: 'hackerone',
-        inputSelector: '#algolia-doc-search',
-      })
-    } else {
-      console.warn('Search has failed to load and now is being disabled')
-      this.setState({ enabled: false })
-    }
-  }
-
-  render() {
-    const { enabled } = this.state
-
-    return enabled ? (
-      <form className="search">
-        <input
-          className="search__input"
-          id="algolia-doc-search"
-          type="search"
-          placeholder="Search docs"
-          aria-label="Search docs"
-        />
-      </form>
-    ) : null
-  }
+function Search() {
+  return (
+    <DocSearch
+      appId="JNZ23QXOBB"
+      apiKey="9a387ea0841a8a1d573b6c7d3ee1df08"
+      indexName="hackerone"
+    />
+  );
 }
 
-export default Search
+export default Search;
